@@ -1,84 +1,48 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Image from 'next/image'
+import { Footer } from '../components/Footer'
+import { Input } from '../components/Input'
+import { Layout } from '../components/Layout'
+import { NewestTracks } from '../components/NewestTracks'
+import { cn } from '../utils/tailwind'
 
 const Home: NextPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+      <Layout title="GE ITS Add songs">
+        <header className='flex justify-center flex-wrap text-center py-20 px-10'>
+          <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#42d392] to-[#647eff]">
+            Welcome to GE ITS Add Songs!
+          </h1>
+          <p className="mt-3 text-2xl text-[#979797]">
+            Get started by typing the URL of the song below{' '}
+          </p>
+        </header>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+        <section className="flex flex-col justify-center relative max-w-5xl mx-auto p-5">
+          <Input value="" onChange={() => { }} />
+          <div className='flex flex-col justify-center p-6 max-w-4xl rounded-lg border-current bg-[#242424] border border-gray-800'>
+            <div className={cn('grid grid-cols-1 sm:grid-cols-2')}>
+              <div>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
+                <h2 className="text-xl font-semibold">See the newest 5 tracks added to the playlist</h2>
+                <NewestTracks />
+              </div>
+              <div className={cn(
+                "flex justify-center bg-transparent aspect-w-1 aspect-h-1",
+                "w-full overflow-hidden",
+                "rounded-lg bg-gray-200",
+                "xl:aspect-w-7 xl:aspect-h-8",
+              )}   >
+                <Image src='/icon.svg' alt=""
+                  layout="fill"
+                  objectFit="cover" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </Layout>
     </div>
   )
 }
